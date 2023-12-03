@@ -1,0 +1,19 @@
+        let affineTransform = CGAffineTransform(translationX: size.width * 0.5,
+                                                y: size.height * 0.5)
+        .rotated(by: CGFloat(angle))
+        .translatedBy(x: -size.width * 0.5 + translation,
+                      y: -size.height * 0.5 - translation)
+        .scaledBy(x: scaleFactor, y: scaleFactor)
+        
+        return ProjectionTransform(affineTransform)
+    }
+}
+
+struct ShakeEffect: GeometryEffect {
+
+    var offsetValue: Double // 0...1
+    
+    var animatableData: Double {
+        get { offsetValue }
+        set { offsetValue = newValue }
+    }
